@@ -1,6 +1,9 @@
-using System.Diagnostics;
+using DeskLink.Agent.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<SystemCommandService>();
+
 var app = builder.Build();
 
 app.MapGet("/", () => "DeskLink Agent is running");
@@ -28,32 +31,24 @@ app.MapGet("/status", () =>
     });
 });
 
-app.MapPost("/commands/lock", () =>
+app.MapPost("/commands/lock", (SystemCommandService systemCommands) =>
 {
-    try
-    {
-        Process.Start(new ProcessStartInfo
-        {
-            FileName = "rundll32.exe",
-            Arguments = "user32.dll,LockWorkStation",
-            CreateNoWindow = true,
-            UseShellExecute = false
-        });
+    var success = systemCommands.LockWorkstation();
 
-        return Results.Ok(new
-        {
-            success = true,
-            command = "lock",
-            message = "Laptop locked successfully"
-        });
-    }
-    catch (Exception ex)
+    if (!success)
     {
         return Results.Problem(
             title: "Failed to lock laptop",
-            detail: ex.Message
+            detail: "DeskLink could not execute the lock command."
         );
     }
+
+    return Results.Ok(new
+    {
+        success = true,
+        command = "lock",
+        message = "Laptop locked successfully"
+    });
 });
 
 app.Run();
