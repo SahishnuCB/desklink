@@ -20,12 +20,40 @@ app.MapGet("/status", () =>
         device = machineName,
         user = userName,
         os = osVersion,
-        time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+        time = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"),
         memory = new
         {
             totalAvailableBytes = totalMemory
         }
     });
+});
+
+app.MapPost("/commands/lock", () =>
+{
+    try
+    {
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = "rundll32.exe",
+            Arguments = "user32.dll,LockWorkStation",
+            CreateNoWindow = true,
+            UseShellExecute = false
+        });
+
+        return Results.Ok(new
+        {
+            success = true,
+            command = "lock",
+            message = "Laptop locked successfully"
+        });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(
+            title: "Failed to lock laptop",
+            detail: ex.Message
+        );
+    }
 });
 
 app.Run();
