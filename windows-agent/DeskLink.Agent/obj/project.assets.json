@@ -8,19 +8,19 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\sahis\\.nuget\\packages\\": {}
+    "C:\\Users\\avani\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sahis\\Documents\\CODING\\PROJECTS\\PERSONAL\\desklink\\windows-agent\\DeskLink.Agent\\DeskLink.Agent.csproj",
+      "projectUniqueName": "C:\\Users\\avani\\Desktop\\desklink\\windows-agent\\DeskLink.Agent\\DeskLink.Agent.csproj",
       "projectName": "DeskLink.Agent",
-      "projectPath": "C:\\Users\\sahis\\Documents\\CODING\\PROJECTS\\PERSONAL\\desklink\\windows-agent\\DeskLink.Agent\\DeskLink.Agent.csproj",
-      "packagesPath": "C:\\Users\\sahis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sahis\\Documents\\CODING\\PROJECTS\\PERSONAL\\desklink\\windows-agent\\DeskLink.Agent\\obj\\",
+      "projectPath": "C:\\Users\\avani\\Desktop\\desklink\\windows-agent\\DeskLink.Agent\\DeskLink.Agent.csproj",
+      "packagesPath": "C:\\Users\\avani\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\avani\\Desktop\\desklink\\windows-agent\\DeskLink.Agent\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sahis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\avani\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
