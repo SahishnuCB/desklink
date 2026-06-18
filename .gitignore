@@ -1,0 +1,15 @@
+@"
+# .NET build outputs
+**/bin/
+**/obj/
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+
+# OS junk
+.DS_Store
+Thumbs.db
+"@ | Out-File -Encoding utf8 .gitignore
