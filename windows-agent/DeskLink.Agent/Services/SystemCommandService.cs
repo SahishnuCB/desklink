@@ -1,9 +1,13 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace DeskLink.Agent.Services;
 
 public class SystemCommandService
 {
+    [DllImport("PowrProf.dll", SetLastError = true)]
+    private static extern bool SetSuspendState(bool hibernate, bool forceCritical, bool disableWakeEvent);
+
     public bool LockWorkstation()
     {
         try
@@ -17,6 +21,18 @@ public class SystemCommandService
             });
 
             return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public bool Sleep()
+    {
+        try
+        {
+            return SetSuspendState(false, false, false);
         }
         catch
         {

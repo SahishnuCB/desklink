@@ -51,4 +51,24 @@ app.MapPost("/commands/lock", (SystemCommandService systemCommands) =>
     });
 });
 
+app.MapPost("/commands/sleep", (SystemCommandService systemCommands) =>
+{
+    var success = systemCommands.Sleep();
+
+    if (!success)
+    {
+        return Results.Problem(
+            title: "Failed to put laptop to sleep",
+            detail: "DeskLink could not execute the sleep command."
+        );
+    }
+
+    return Results.Ok(new
+    {
+        success = true,
+        command = "sleep",
+        message = "Laptop is going to sleep"
+    });
+});
+
 app.Run();
